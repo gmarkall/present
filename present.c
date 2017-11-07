@@ -13,7 +13,7 @@ void
 print_state(uint8_t* state)
 {
     for (size_t i = 0; i < STATE_SIZE; i++)
-        printf("%x", state[i]);
+        printf("%02x", state[i]);
     printf("\n");
 }
 
@@ -124,7 +124,7 @@ void encrypt(uint8_t* state, uint8_t* key)
 {
     uint8_t round_key[STATE_SIZE];
 
-    for (size_t k = 0; k < 32; k++) {
+    for (size_t k = 1; k < 32; k++) {
         for (size_t j = 0; j < 8; j++) {
             round_key[j] = key[2+j];
         }
@@ -166,12 +166,8 @@ void decrypt(uint8_t* state, uint8_t* key)
 }
 
 int main(void) {
-    uint8_t state[STATE_SIZE];
-    uint8_t Mkey[KEY_SIZE];
-
-    /* Copy plaintext into state */
-    memcpy(state, "barbarro", STATE_SIZE);
-    memcpy(Mkey, "_S21FEDCBA", KEY_SIZE);
+    uint8_t state[STATE_SIZE] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+    uint8_t Mkey[KEY_SIZE] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
     print_state(state);
 
