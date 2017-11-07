@@ -210,7 +210,7 @@ uint64_t Mirror64(uint64_t ins) {
 }
 
 
-int main(int arc, char **argv) {
+int main(void) {
   uint64_t plaintexts[RADIX];
   uint64_t ciphertexts[RADIX];
   word tmp[Bs];
