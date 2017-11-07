@@ -1,11 +1,13 @@
 CFLAGS = -std=c99 -Wall -Werror -Wextra -pedantic
+PROGS = present present_bitslice
 
-all: present
 
-present: present.c
-	gcc $(CFLAGS) -o present present.c
+all: $(PROGS)
+
+%: %.c
+	gcc $(CFLAGS) -o $@ $^
 
 .PHONY: clean
 
 clean:
-	rm -f present
+	rm -f $(PROGS)
